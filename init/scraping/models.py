@@ -43,3 +43,22 @@ class Language(models.Model):
     class Meta:
         verbose_name = 'Язык программирования'
         verbose_name_plural = 'Языки программирования'
+
+class Vacancy(models.Model):
+    vacan_url = models.URLField(unique=True, verbose_name='Ссылка на вакансию')
+    vacan_title = models.CharField(max_length=100, verbose_name='Название вакансии')
+    vacan_company = models.CharField(max_length=100, verbose_name='Компания')
+    vacan_description = models.TextField(verbose_name='Описание вакансии')
+    vacan_savary = models.IntegerField(blank=True, verbose_name='Заработная плата', default='Не указано')
+    vacan_language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name='Язык программирования')
+    vacan_city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='Город')
+    vacan_format = models.CharField(max_length=300, verbose_name='Формат работы', default='Офис')
+    vacan_experience = models.CharField(max_length=50, blank=True, verbose_name='Опыт', default='Без опыта')
+    vacan_timestamp = models.DateField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Вакансия'
+        verbose_name_plural = 'Вакансии'
+
+    def __str__(self):
+        return self.vacan_title
