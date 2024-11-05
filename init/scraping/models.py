@@ -23,7 +23,6 @@ class City(models.Model):
         verbose_name = 'Название населенного пункта'
         verbose_name_plural = 'Название населенных пунктов'
 
-
 class Language(models.Model):
     lan_name = models.CharField(max_length=50,
                                 unique=True,
@@ -49,7 +48,7 @@ class Vacancy(models.Model):
     vacan_title = models.CharField(max_length=100, verbose_name='Название вакансии')
     vacan_company = models.CharField(max_length=100, verbose_name='Компания')
     vacan_description = models.TextField(verbose_name='Описание вакансии')
-    vacan_savary = models.IntegerField(blank=True, verbose_name='Заработная плата', default='Не указано')
+    vacan_salary = models.CharField( max_length=12, blank=True, verbose_name='Заработная плата', default='Не указано')
     vacan_language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name='Язык программирования')
     vacan_city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='Город')
     vacan_format = models.CharField(max_length=300, verbose_name='Формат работы', default='Офис')
