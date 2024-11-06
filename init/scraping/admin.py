@@ -4,23 +4,23 @@ from .models import City, Language, Vacancy
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
-    list_display = ('ct_name', 'ct_slug')
+    list_display = ('name', 'slug')
 
 @admin.register(Language)
 class LanguageAdmin(admin.ModelAdmin):
-    list_display = ('lan_name','lan_slug')
+    list_display = ('name','slug')
 
 @admin.register(Vacancy)
 class VacancyAdmin(admin.ModelAdmin):
-    list_display = ('vacan_title', 'vacan_company',
-                    'vacan_language', 'vacan_city',
-                    'vacan_experience', 'vacan_format')
-    list_filter = ('vacan_company', 'vacan_language',
-                   'vacan_city', 'vacan_experience')
+    list_display = ('title', 'company',
+                    'language', 'city',
+                    'experience', 'format')
+    list_filter = ('company', 'language',
+                   'city', 'experience')
     list_per_page = 50
     list_max_show_all = 100
-    search_fields = ('vacan_company','vacan_language',)
-    fields = ('vacan_title', 'vacan_language', 'vacan_company',
-               'vacan_city', 'vacan_experience', 'vacan_salary',
-                'vacan_format', 'vacan_description', 'vacan_url',
+    search_fields = ('company','language',)
+    fields = ('title', 'language', 'company',
+               'city', 'experience', 'salary',
+                'format', 'description', 'url',
                )
